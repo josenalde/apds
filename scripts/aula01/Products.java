@@ -1,4 +1,5 @@
 /*
+ COM FILE_4.java e PRODUCTS.CSV, incluir no pacote ENTITIES
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
