@@ -17,7 +17,6 @@ public class Arquivo {
             FileWriter fw = new FileWriter(path, true);
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(texto);
-            //pw.flush();
             bw.close();
             return true;
         } catch (IOException e) {
