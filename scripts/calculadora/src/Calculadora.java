@@ -67,7 +67,7 @@ public class Calculadora {
     public void captureInformations() {
         Scanner reader = new Scanner(System.in);
         int a = reader.nextInt();
-        char op = reader.next().charAt(0); // nao ha nextChar() em java
+        char op = reader.next().charAt(0); // nao ha nextChar() em java lê até encontrar espaço
         int b = reader.nextInt();
         Calculadora c = new Calculadora(a, op, b);
         int r = c.calculate();
