@@ -1,0 +1,4 @@
+tecinfo\poo\App.class
+tecinfo\poo\model\dao\DBConnection.class
+tecinfo\poo\PrimaryController.class
+tecinfo\poo\SecondaryController.class
