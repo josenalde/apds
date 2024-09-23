@@ -5,30 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static Connection c;
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "gadoyhovy";
+    private static final String URL_DB = "jdbc:postgresql://localhost:5433/dbproducts";
 
-    public static void openConnection() {
-        c = null;
+    public static Connection getConnection() {
+        Connection conn = null; // a default null connection
         try {
-            String dburl = "jdbc:postgresql://localhost:5433/dbproducts"; // default port is 5432 (check)
-            c = DriverManager.getConnection(dburl, "postgres", "gadoyhovy"); // server password
-            if (c != null) {
+            conn = DriverManager.getConnection(DBConnection.URL_DB, DBConnection.USER, DBConnection.PASSWORD); // server password
+            if (conn != null) {
                 System.out.println("Connected to database #1");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (c != null && !c.isClosed()) {
-                    c.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Erro ao conectar com o banco de dados: " + e); //e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
         }
-    }
-
-    public Connection getConnection() {
-        return c;
+        return conn;
     }
 }
