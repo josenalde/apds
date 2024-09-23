@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class DBConnection {
     private static final String USER = "postgres";
-    private static final String PASSWORD = "gadoyhovy";
-    private static final String URL_DB = "jdbc:postgresql://localhost:5433/dbproducts";
+    private static final String PASSWORD = "postgres"; //put your credentials
+    private static final String URL_DB = "jdbc:postgresql://localhost:5433/dbproducts"; // you may change the server port and database name
 
     public static Connection getConnection() {
         Connection conn = null; // a default null connection
@@ -17,9 +17,9 @@ public class DBConnection {
                 System.out.println("Connected to database #1");
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao conectar com o banco de dados: " + e); //e.printStackTrace();
+            System.out.println("Error connecting to the database: " + e); //e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Erro: " + e);
+            System.out.println("Error: " + e);
         }
         return conn;
     }
