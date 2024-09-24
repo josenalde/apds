@@ -1,16 +1,14 @@
 -- Table: public.tbproducts
 
--- DROP TABLE IF EXISTS public.tbproducts;
+DROP TABLE IF EXISTS public.tbproducts;
 
 CREATE TABLE IF NOT EXISTS public.tbproducts
 (
     name text COLLATE pg_catalog."default",
     quantity integer,
-    value real
+    value real,
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 )
 )
-
-ALTER TABLE IF EXISTS public.tbproducts
-    ADD COLUMN id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 );
 
 TABLESPACE pg_default;
 
