@@ -1,18 +1,8 @@
-## Getting Started
+## Problema Quadrado Mágico da OBI 2007: https://olimpiada.ic.unicamp.br/pratique/p1/2007/f1/magico/
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Possível solução (não otimizada/refatorada) para o problema do Quadrado Mágico da OBI. Neste caso a versão de 2007, Fase I, P1,
+que é mais geral. A solução está no paradigma OO. Para submissão à OBI, precisa ser paradigma estruturado, dentro de única classe com o método main() incorporado.
 
-## Folder Structure
+Existem outras versões com restrições, como esta que exige números numerados de 1 a N^2 e cujo valor do número mágico é determinado por N * (N * N + 1) / 2 
+e esta: https://neps.academy/br/exercise/2068
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
