@@ -49,5 +49,15 @@ public class App {
             }
         } while (!readFlag);
         cin.close();
+
+        /*
+         Se o atributo da classe for do tipo LocalDate, lê como String e retorna LocalDate
+         public static LocalDate dateInput(String userInput) {
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date = LocalDate.parse(userInput, formato);
+            return date;
+        }
+        // no Main: LocalDate newDate = dateInput(dateConsole);
+         */
     }
 }
