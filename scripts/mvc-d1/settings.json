@@ -1,0 +1,5 @@
+{
+    "git.ignoreLimitWarning": true,
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.debug.settings.onBuildFailureProceed": true
+}
