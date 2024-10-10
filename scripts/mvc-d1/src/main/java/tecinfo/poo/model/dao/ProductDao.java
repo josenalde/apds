@@ -1,4 +1,3 @@
-/* by Josenalde Oliveira 2024 */
 package tecinfo.poo.model.dao;
 
 import java.sql.Connection;

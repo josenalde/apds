@@ -13,17 +13,22 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>18</version>
+            <version>19</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>18</version>
+            <version>19</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId> <!--https://mvnrepository.com/artifact/org.postgresql/postgresql-->
             <artifactId>postgresql</artifactId>
             <version>42.7.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfoenix</groupId> <!--https://mvnrepository.com/artifact/com.jfoenix/jfoenix-->
+            <artifactId>jfoenix</artifactId>
+            <version>9.0.10</version>
         </dependency>
     </dependencies>
     <build>
@@ -51,6 +56,16 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--https://maven.apache.org/plugins/maven-resources-plugin/examples/resource-directory.html-->
         </plugins>
+        <resources>
+                <resource>
+                    <directory>src/main/resources/img</directory>
+                </resource>
+                <resource>
+                    <directory>src/main/resources</directory>
+                </resource>
+        </resources>
     </build>
 </project>
+

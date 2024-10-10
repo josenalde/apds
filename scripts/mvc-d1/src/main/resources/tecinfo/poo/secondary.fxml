@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -8,6 +9,7 @@
 <VBox alignment="CENTER" prefWidth="243.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tecinfo.poo.controller.SecondaryController">
     <children>
         <Label text="Secondary View" />
+      <JFXButton style="-fx-background-color: #ffff00;" text="I do nothing" />
         <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
     </children>
     <padding>

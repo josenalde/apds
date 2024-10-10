@@ -18,6 +18,7 @@ public class App extends Application {
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
+        stage.setTitle( "Basic example for switching scenes and getting data from database pgsql by Josenalde");
         stage.setScene(scene);
         stage.show();
     }
