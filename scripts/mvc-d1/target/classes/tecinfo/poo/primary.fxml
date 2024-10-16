@@ -11,7 +11,7 @@
    <children>
       <ImageView fx:id="img_dice_moving" fitHeight="235.0" fitWidth="302.0" onMousePressed="#switchDiceImage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="dices_moving.gif" /> <!-- pasta src/main/resources/img inserida no pom.xml, logo basta o nome do recurso para Image-->
+            <Image url="@../../img/dices_moving.gif" />
          </image>
       </ImageView>
       <Label text="Primary View" />
