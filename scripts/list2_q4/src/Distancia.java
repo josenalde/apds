@@ -7,7 +7,7 @@ public class Distancia {
     public static void main(String[] args) throws Exception {
         
         
-        // criando alguns testes
+        // criando alguns testes manualmente
         args[0] = "1,2,3,2,5,1,4";
         args[1] = "1,4,5";
         args[2] = "1,1";
@@ -17,13 +17,6 @@ public class Distancia {
 
         if (args.length > 0) {
             for (int j = 0; j < args.length; j++) {
-                /*String[] p = args[j].split(",");
-                int d = 0; //acumular distancias
-                for (int i = 0; i < p.length-1; i++) {
-                    int origem = Integer.parseInt(p[i]);
-                    int destino = Integer.parseInt(p[i+1]);
-                    d += D[origem-1][destino-1];
-                }*/
                 String rt = (r[j] == calculaDistancia(args[j]))?"OK":"FAILED";
                 System.out.println("Teste" + (j+1) + ": " + calculaDistancia(args[j]) + ": " + rt);
             }
@@ -41,8 +34,6 @@ public class Distancia {
                     int destino = Integer.parseInt(p[i+1]);
                     d += D[origem-1][destino-1];
                 }
-                //String rt = (r[j] == d)?"OK":"FAILED";
-                //System.out.println("Teste" + (j+1) + ": " + d + ": " + rt);
             }
         }
         return d;
