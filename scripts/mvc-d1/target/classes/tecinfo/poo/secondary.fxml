@@ -9,13 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="904.0" prefWidth="1203.0" spacing="20.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tecinfo.poo.controller.SecondaryController">
     <children>
       <TableView fx:id="tbvProducts" prefHeight="258.0" prefWidth="1163.0" />
       <BorderPane prefHeight="164.0" prefWidth="1163.0">
          <top>
-              <Label text="Secondary View" BorderPane.alignment="CENTER" />
+              <Label fx:id="lblCounter" text="Secondary View" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
          </top>
          <center>
             <JFXButton style="-fx-background-color: #ffff00;" text="I do nothing" BorderPane.alignment="CENTER" />

@@ -9,7 +9,6 @@ import tecinfo.poo.App;
 import tecinfo.poo.model.Product;
 import tecinfo.poo.model.dao.ProductDao;
 //import tecinfo.poo.model.dao.DBConnection;
-
 import javafx.event.ActionEvent;
 //import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -96,5 +95,6 @@ public class PrimaryController {
         }*/
 
         App.setRoot("secondary");
+        
     }
 }

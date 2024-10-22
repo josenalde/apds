@@ -4,6 +4,7 @@ module tecinfo.poo {
     requires java.sql;
     requires com.jfoenix;
     requires javafx.base;
+    requires javafx.graphics;
     //requires javafx.graphics;
 
     opens tecinfo.poo.controller to javafx.fxml;

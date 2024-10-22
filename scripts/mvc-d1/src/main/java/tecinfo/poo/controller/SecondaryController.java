@@ -4,6 +4,9 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXListView;
 
+//import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,17 +17,23 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Duration;
 import tecinfo.poo.App;
 import tecinfo.poo.model.Product;
 import tecinfo.poo.model.dao.ProductDao;
 
 public class SecondaryController {
 
+    int counter = 0;
+    
     @FXML
     private JFXListView<Label> list; //o mesmo fx:id no scene builder
     
     @FXML
     private TableView<Product> tbvProducts;
+
+    @FXML
+    private Label lblCounter;
 
     @FXML
     private void switchToPrimary() throws IOException {
@@ -39,6 +48,27 @@ public class SecondaryController {
     @SuppressWarnings("unchecked")
     @FXML
     public void initialize() {
+        
+        //temporizador (exemplo)
+       
+        lblCounter.setText(String.valueOf(counter));
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            counter++;
+            lblCounter.setText(String.valueOf(counter));
+        }));
+        timeline.setCycleCount(5); //Animation.INDEFINITE (-1)
+        timeline.play();
+        timeline.setOnFinished(e -> {
+            try {
+                switchToPrimary();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+        
+        
+        
         Label label = new Label("Linha 1 com Label 1");
         list.setExpanded(true);
         list.getItems().add(label);
@@ -48,7 +78,7 @@ public class SecondaryController {
         // label.setGraphic(new ImageView(new Image(URL)))
 
 
-        // criação colunas TableView, considerando que não foram criadas no scene builder. Preenche dados do CONSTRUTOR PRODUCT
+        // criação colunas TableView, considerando que não foram criadas no scene builder. 
         TableColumn<Product, Long> colId = new TableColumn<Product,Long>("id");
         TableColumn<Product, String> colName = new TableColumn<Product,String>("nome");
         TableColumn<Product, Long> colQuantity = new TableColumn<Product,Long>("quantidade");
