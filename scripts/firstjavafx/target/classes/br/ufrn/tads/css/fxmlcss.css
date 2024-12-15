@@ -1,0 +1,9 @@
+.button.insert {
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+}
+
+.root {
+    -fx-background-color: #6eadd5;
+    background-color: #6eadd5;
+}

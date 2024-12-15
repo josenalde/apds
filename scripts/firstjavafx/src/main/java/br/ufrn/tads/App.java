@@ -17,7 +17,9 @@ public class App extends Application {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("primary"), 1024, 768);
+        scene.getStylesheets().add("fxmlcss.css");
+        stage.setTitle("Aprendendo POO no TADS@UFRN com Prof. Josenalde Oliveira");
         stage.setScene(scene);
         stage.show();
     }

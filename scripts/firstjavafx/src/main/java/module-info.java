@@ -4,5 +4,6 @@ module br.ufrn.tads {
     requires java.sql;
 
     opens br.ufrn.tads.controller to javafx.fxml;
+    opens br.ufrn.tads.model to javafx.base;
     exports br.ufrn.tads;
 }

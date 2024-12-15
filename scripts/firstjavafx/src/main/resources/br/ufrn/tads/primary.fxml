@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.tads.controller.PrimaryController">
+<VBox alignment="CENTER" prefHeight="688.0" prefWidth="955.0" spacing="20.0" stylesheets="@css/fxmlcss.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.tads.controller.PrimaryController">
    <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
+      <AnchorPane centerShape="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="77.0" prefWidth="915.0">
+         <children>
+            <Label fx:id="lblMsg" layoutX="311.0" layoutY="25.0" text="Produtos TADS@UFRN" textFill="#0013ff">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <TableView fx:id="tbvProducts" editable="true" layoutX="123.0" prefHeight="200.0" prefWidth="669.0">
+              <columns>
+                <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="262.0" text="Nome" />
+                  <TableColumn fx:id="colQuantity" prefWidth="104.0" text="Quantidade" />
+                  <TableColumn fx:id="colValue" prefWidth="231.0" text="Valor (R$)" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="listButton" ellipsisString="" layoutX="181.0" layoutY="85.0" onAction="#listProducts" prefHeight="32.0" prefWidth="70.0" styleClass="insert" />
+            <Button fx:id="addButton" accessibleText="Adicionar" ellipsisString="" layoutX="300.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#addProduct" prefHeight="32.0" prefWidth="100.0" snapToPixel="false" text="Adicionar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutX="-3.0" layoutY="185.0" prefHeight="0.0" prefWidth="915.0" />
+         </children>
+      </Pane>
+      <Label fx:id="lblDateTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="259.0" text="teste" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

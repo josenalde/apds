@@ -20,6 +20,7 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21</version>
         </dependency>
+                
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 <dependency>
     <groupId>org.postgresql</groupId>
@@ -54,5 +55,18 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+                
+                <resource>
+                    <directory>src/main/resources/br/ufrn/tads/img</directory>
+                </resource>
+                <resource>
+                    <directory>src/main/resources/br/ufrn/tads/css</directory>
+                </resource>
+                <resource>
+                    <directory>src/main/resources</directory>
+                </resource>
+               
+        </resources>
     </build>
 </project>
