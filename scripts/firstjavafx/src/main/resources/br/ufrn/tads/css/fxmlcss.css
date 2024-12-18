@@ -19,6 +19,13 @@
     background-color: #3d140d;
 }
 
+.button.clean {
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+    -fx-background-color: #d40808;
+    background-color: #d40808;
+}
+
 .root {
     -fx-background-color: #ffffff;
     background-color: #ffffff;

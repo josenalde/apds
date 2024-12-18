@@ -65,7 +65,12 @@
                               <String fx:value="update" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="addButton" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" onAction="#addProduct" styleClass="insert" text="Novo" textFill="WHITE">
+                        <Button fx:id="addButton" layoutX="280.0" layoutY="15.0" mnemonicParsing="false" onAction="#addProduct" styleClass="insert" text="Inserir" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="clnButton" mnemonicParsing="false" onAction="#cleanForm" styleClass="clean" text="Limpar" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

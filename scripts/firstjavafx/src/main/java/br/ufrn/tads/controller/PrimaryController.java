@@ -43,6 +43,9 @@ public class PrimaryController {
     private Button updButton;
 
     @FXML
+    private Button clnButton;
+
+    @FXML
     private TableView<Product> tbvProducts;
 
     @FXML
@@ -99,6 +102,10 @@ public class PrimaryController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+        addButton.setVisible(true);
+        updButton.setDisable(true);
+        delButton.setDisable(true);
     }
     //método para obter itens da linha selecionada da tabela e copiar para o form com os text fields
     @FXML
@@ -109,6 +116,10 @@ public class PrimaryController {
         tfName.setText(colName.getCellData(idx));
         tfQuantity.setText(String.valueOf(colQuantity.getCellData(idx)));
         tfValue.setText(String.valueOf(colValue.getCellData(idx)));
+
+        addButton.setDisable(true);
+        updButton.setDisable(false);
+        delButton.setDisable(false);
     }
     
     @FXML
@@ -148,8 +159,28 @@ public class PrimaryController {
     }
 
     @FXML
+    void cleanForm(ActionEvent event) {
+        if (!tfName.getText().isEmpty() && !tfQuantity.getText().isEmpty() && !tfValue.getText().isEmpty() && !tfID.getText().isEmpty()) {
+            tfID.clear();
+            tfName.clear();
+            tfQuantity.clear();
+            tfValue.clear();
+            addButton.setDisable(false);
+            updButton.setDisable(true);
+            delButton.setDisable(true);
+        }
+    }
+
+    @FXML
     void updProduct(ActionEvent event) {
-        //todo
+        if (!tfName.getText().isEmpty() && !tfQuantity.getText().isEmpty() && !tfValue.getText().isEmpty() && !tfID.getText().isEmpty()) {
+            String name = tfName.getText();
+            Long quantity = Long.parseLong(tfQuantity.getText());
+            Long id = Long.parseLong(tfID.getText());
+            Float value = Float.parseFloat(tfValue.getText());
+            Product product = new Product(id, name, quantity, value);
+            productService.update(product, null);        
+        }
     }
 
     void animateTimeLabel() {
