@@ -1,26 +1,27 @@
 package br.ufrn.tads.controller;
 
 import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.List;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-//import br.ufrn.tads.App;
 import br.ufrn.tads.model.Product;
 import br.ufrn.tads.service.ProductService;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.util.Duration;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class PrimaryController {
@@ -30,13 +31,16 @@ public class PrimaryController {
     private Label lblDateTime;
 
     @FXML
-    private Label lblMsg;
-
-    @FXML
     private Button listButton;
 
     @FXML
     private Button addButton;
+
+    @FXML
+    private Button delButton;
+
+    @FXML
+    private Button updButton;
 
     @FXML
     private TableView<Product> tbvProducts;
@@ -53,23 +57,40 @@ public class PrimaryController {
     @FXML
     private TableColumn<Product, Float> colValue;
 
+    @FXML
+    private ImageView imgvLogo;
+
+    @FXML
+    private TextField tfID;
+
+    @FXML
+    private TextField tfName;
+
+    @FXML
+    private TextField tfQuantity;
+
+    @FXML
+    private TextField tfValue;
+
+
 
     public PrimaryController() {
-        System.out.println("Constructor method");
+        // EXECUTADO PRIMEIRO
+        productService = new ProductService();
     }
 
-    //@SuppressWarnings("unchecked")
     @FXML
     public void initialize() {
-        System.out.println("Init method");
+        //EXECUTADO DEPOIS DO CONSTRUTOR
+        
         Image img = new Image("listicon.png");
         ImageView imgView = new ImageView(img);
         listButton.setGraphic(imgView);
+
+        img = new Image("nometads.png");
+        imgvLogo.setImage(img);
         
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter dtFmt = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm:ss");
-        String nowFmt = dtFmt.format(now);
-        lblDateTime.setText(nowFmt);
+        animateTimeLabel();
 
         //SE NÃO CRIOU COLUNAS NO SCENE BUILDER, ADICIONARIA AQUI OS TABLECOLUMNS
         //tbvProducts.getColumns().addAll(colId, colName, colQuantity, colValue);
@@ -78,47 +99,66 @@ public class PrimaryController {
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colQuantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colValue.setCellValueFactory(new PropertyValueFactory<>("value"));
-
     }
-
+    //método para obter itens da linha selecionada da tabela e copiar para o form com os text fields
+    @FXML
+    void getItem(MouseEvent event) {
+        Integer idx = tbvProducts.getSelectionModel().getSelectedIndex();
+        if (idx <= -1) return;
+        tfID.setText(String.valueOf(colId.getCellData(idx)));
+        tfName.setText(colName.getCellData(idx));
+        tfQuantity.setText(String.valueOf(colQuantity.getCellData(idx)));
+        tfValue.setText(String.valueOf(colValue.getCellData(idx)));
+    }
+    
     @FXML
     private void listProducts(ActionEvent event) throws IOException {
-        productService = new ProductService();
-        
+                
         ObservableList<Product> list = FXCollections.observableArrayList(productService.getProducts());
         tbvProducts.setItems(list);     
         
-        // NO CONSOLE
-        //List<Product> list = new ArrayList<Product>();
-        //list = productService.getProducts();
-        /*System.out.println("LISTAGEM DE PRODUTOS NO BANCO DE DADOS");
-        System.out.println("----------------------------------------");
-        if (list.size() > 0) {
-            for (int i = 0; i < list.size(); i++) {
-                System.out.print("id: " + list.get(i).getId());
-                System.out.print(", name: " + list.get(i).getName());
-                System.out.print(", quantity: " + list.get(i).getQuantity());
-                System.out.println(", value: " + list.get(i).getValue());
-            }
-        }*/
-        
-        lblMsg.setTextFill(Color.GREEN); 
-        lblMsg.setText("Listagem realizada com sucesso...");
     }
 
     @FXML
     private void addProduct(ActionEvent event) throws IOException {
-        // Ao clicar no botão pode abrir janela com formulário para inserir novo produto
-        // As caixas de texto (TextField) possuem a propriedade getText
-        Product product = new Product("abajur", 2L, 42.99f);
-        productService = new ProductService();
-        if (productService.save(product) == 1) {
-            lblMsg.setTextFill(Color.GREEN); 
-            lblMsg.setText("Inclusão realizada com sucesso...");
-            //listProducts(event);
-        } else {
-            lblMsg.setTextFill(Color.RED); 
-            lblMsg.setText("Erro no processamento da inclusão dos dados...");
+        if (!tfName.getText().isEmpty() && !tfQuantity.getText().isEmpty() && !tfValue.getText().isEmpty()) {
+            String name = tfName.getText();
+            Long quantity = Long.parseLong(tfQuantity.getText());
+            Float value = Float.parseFloat(tfValue.getText());
+            Product product = new Product(name, quantity, value);
+
+            if (productService.save(product)) {
+                tbvProducts.getItems().add(product); //inclui na tableview, mas sem novo ID, pois primeiro precisa persistir no BD
+            }
+        }   
+    }
+
+    @FXML
+    void delProduct(ActionEvent event) {
+        if (!tfName.getText().isEmpty() && !tfQuantity.getText().isEmpty() && !tfValue.getText().isEmpty() && !tfID.getText().isEmpty()) {
+            if (productService.delete(Long.parseLong(tfID.getText()))) {
+                int idx = tbvProducts.getSelectionModel().getSelectedIndex();
+                tbvProducts.getItems().remove(idx); //inclui na tableview, mas sem novo ID, pois primeiro precisa persistir no BD
+                tfID.clear();
+                tfName.clear();
+                tfQuantity.clear();
+                tfValue.clear();
+            }
         }
+    }
+
+    @FXML
+    void updProduct(ActionEvent event) {
+        //todo
+    }
+
+    void animateTimeLabel() {
+        DateTimeFormatter dtFmt = DateTimeFormatter.ofPattern("dd-MM-yyyy, HH:mm:ss");
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            lblDateTime.setText(dtFmt.format(LocalDateTime.now()));
+        }));
+        timeline.setCycleCount(-1); //Animation.INDEFINITE (-1)
+        timeline.play();
     }
 }

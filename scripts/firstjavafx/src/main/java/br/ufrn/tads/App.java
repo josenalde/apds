@@ -8,17 +8,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
 
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 1024, 768);
+        scene = new Scene(loadFXML("primary"), 1000, 1500);
         scene.getStylesheets().add("fxmlcss.css");
+        stage.setHeight(1000);
+        stage.setWidth(1500);
         stage.setTitle("Aprendendo POO no TADS@UFRN com Prof. Josenalde Oliveira");
         stage.setScene(scene);
         stage.show();

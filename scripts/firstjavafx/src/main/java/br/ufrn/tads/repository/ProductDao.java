@@ -84,7 +84,7 @@ public class ProductDao implements Dao<Product> {
     }
 
     @Override
-    public int save(Product product) {
+    public boolean save(Product product) {
         String sql = "insert into product (name, quantity, value)" + " values (?, ?, ?)"; 
         Connection conn = null;
         // prepares a query
@@ -106,12 +106,12 @@ public class ProductDao implements Dao<Product> {
             try {
                 if (preparedStatement != null) preparedStatement.close();
                 if (conn != null) conn.close();
-                return 1;
+                return true;
             } catch(Exception e) {
                 e.printStackTrace();
             }
         }
-        return 0;
+        return false;
     }
 
     @Override
@@ -148,7 +148,7 @@ public class ProductDao implements Dao<Product> {
     }
 
     @Override
-    public boolean delete(Product product) {
+    public boolean delete(Long id) {
         String sql = "delete from product where id = ?"; 
         Connection conn = null;
         // prepares a query
@@ -157,11 +157,8 @@ public class ProductDao implements Dao<Product> {
         try {
             conn = DBconnection.getConnection();
             preparedStatement = conn.prepareStatement(sql);
-            
-            preparedStatement.setLong(1, product.getId());
-            
+            preparedStatement.setLong(1, id);
             preparedStatement.execute(); //it is not a query. It is an insert command
-            
         } catch(Exception e) {
             e.printStackTrace();
         } finally {

@@ -1,9 +1,31 @@
 .button.insert {
     -fx-pref-height: 30px;
     -fx-pref-width: 30px;
+    -fx-background-color: #0d3d0d;
+    background-color: #0d3d0d;
+}
+
+.button.update {
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+    -fx-background-color: #0f0d3d;
+    background-color: #0f0d3d;
+}
+
+.button.delete {
+    -fx-pref-height: 30px;
+    -fx-pref-width: 30px;
+    -fx-background-color: #3d140d;
+    background-color: #3d140d;
 }
 
 .root {
-    -fx-background-color: #6eadd5;
-    background-color: #6eadd5;
+    -fx-background-color: #ffffff;
+    background-color: #ffffff;
 }
+
+.form {
+    -fx-background-color: linear-gradient(to bottom, #00d4ff, #ffffff);
+    background-color: linear-gradient(to bottom, #00d4ff, #ffffff);
+}
+
