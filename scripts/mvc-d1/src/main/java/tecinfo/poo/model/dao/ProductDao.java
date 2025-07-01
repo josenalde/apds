@@ -48,7 +48,7 @@ public class ProductDao implements Dao<Product> {
     }
 
     @Override
-    public List<Product> getAll() { //listAll (if the database is huge, consider the use of pagination)
+    public List<Product> list() { //listAll (if the database is huge, consider the use of pagination)
         List<Product> products = new ArrayList<Product>();
         String sql = "select * from tbproducts"; 
         Connection conn = null;
