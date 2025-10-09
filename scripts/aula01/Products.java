@@ -1,17 +1,8 @@
-/*
- COM FILE_4.java e PRODUCTS.CSV, incluir no pacote ENTITIES
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package apds.file_1.entities;
-
-import java.io.Serializable;
-
 /**
  *
  * @author josen
  */
-public class Products implements Serializable { //fluxo de objetos em bytes (persistir em arquivo o objeto ou trafegar na rede
+public class Products { //fluxo de objetos em bytes (persistir em arquivo o objeto ou trafegar na rede
     private String name;
     private Double price;
     private Integer quantity;
@@ -62,3 +53,4 @@ public class Products implements Serializable { //fluxo de objetos em bytes (per
     
     
 }
+
